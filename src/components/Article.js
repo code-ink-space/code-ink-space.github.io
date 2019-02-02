@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
 import Subline from './Subline'
 
@@ -11,10 +12,14 @@ const Post = styled.article`
   flex-direction: column;
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom 1px solid rgba(0,0,0,0.25);
 
   @media (max-width: ${props => props.theme.breakpoints.phone}) {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom 1px solid rgba(0,0,0,0.25);
   }
 `
 
@@ -27,6 +32,7 @@ const Title = styled.h2`
     &:hover {
       color: ${props => props.theme.colors.primaryLight};
     }
+    border-bottom: none;
   }
 `
 
@@ -45,7 +51,10 @@ const Excerpt = styled.p`
   margin-bottom: 1rem;
 `
 
-const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
+const PostContent = styled.div`
+`
+
+const Article = ({ title, date, body, excerpt, slug, timeToRead, categories }) => {
   const firstChar = title.charAt(0)
 
   return (
@@ -55,7 +64,7 @@ const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
         <Link to={slug}>{title}</Link>
       </Title>
       <Subline>
-        {date} &mdash; {timeToRead} Min Read &mdash; In{' '}
+        Published: {date} &mdash; in{' '}
         {categories.map((cat, i) => (
           <React.Fragment key={cat}>
             {!!i && ', '}
@@ -63,7 +72,9 @@ const Article = ({ title, date, excerpt, slug, timeToRead, categories }) => {
           </React.Fragment>
         ))}
       </Subline>
-      <Excerpt>{excerpt}</Excerpt>
+      <PostContent>
+            <MDXRenderer>{body}</MDXRenderer>
+      </PostContent>
     </Post>
   )
 }

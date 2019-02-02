@@ -9,7 +9,7 @@ import config from '../../config'
 
 const Content = styled.div`
   grid-column: 2;
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.7);
   border-radius: 1rem;
   padding: 2rem 4rem;
   background-color: ${props => props.theme.colors.bg};
@@ -25,7 +25,7 @@ const Content = styled.div`
 
 const Category = ({ pageContext: { category }, data: { allMdx } }) => {
   const { edges, totalCount } = allMdx
-  const subline = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${category}"`
+  const subline = `${totalCount} issue${totalCount === 1 ? '' : 's'} in "${category}"`
 
   return (
     <Layout>
@@ -35,9 +35,9 @@ const Category = ({ pageContext: { category }, data: { allMdx } }) => {
           <Link to="/">{config.siteTitle}</Link>
         </Header>
         <Content>
-          <SectionTitle>Category &ndash; {category}</SectionTitle>
+          <SectionTitle>You are reading: {category}</SectionTitle>
           <Subline sectionTitle>
-            {subline} (See <Link to="/categories">all categories</Link>)
+            {subline} &mdash; See <Link to="/categories">all volumes</Link>
           </Subline>
           {edges.map(post => (
             <Article
@@ -81,7 +81,7 @@ export const postQuery = graphql`
         node {
           frontmatter {
             title
-            date(formatString: "MM/DD/YYYY")
+            date(formatString: "MMMM Do")
             categories
           }
           fields {

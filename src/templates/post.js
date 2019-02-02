@@ -10,7 +10,7 @@ import config from '../../config'
 
 const Content = styled.article`
   grid-column: 2;
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.7);
   max-width: 1000px;
   border-radius: 1rem;
   padding: 2rem 4.5rem;
@@ -63,7 +63,7 @@ const Post = ({ pageContext: { slug, prev, next }, data: { mdx: postNode } }) =>
         <Content>
           <Title>{post.title}</Title>
           <Subline>
-            {post.date} &mdash; {postNode.timeToRead} Min Read &mdash; In{' '}
+            Published: {post.date} &mdash; in{' '}
             {post.categories.map((cat, i) => (
               <React.Fragment key={cat}>
                 {!!i && ', '}
@@ -110,7 +110,7 @@ export const postQuery = graphql`
       excerpt
       frontmatter {
         title
-        date(formatString: "MM/DD/YYYY")
+        date(formatString: "MMMM Do")
         categories
       }
       timeToRead

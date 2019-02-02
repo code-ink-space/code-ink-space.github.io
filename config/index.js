@@ -7,11 +7,11 @@ module.exports = {
   siteUrl: 'https://code-ink-space.github.io', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteHeadline: 'an offshoot of: i blast code and ink into space', // Headline for schema.org JSONLD
-  siteBanner: '/social/banner.jpg', // Your image for og:image tag. You can find it in the /static folder
-  favicon: 'src/favicon.png', // Your image for favicons. You can find it in the /src folder
-  siteDescription: 'a weekly newsletter of the best in tech, books, and photography', // Your site description
+  siteBanner: '/social/code-ink-space-chronicles-banner.jpg', // Your image for og:image tag. You can find it in the /static folder
+  favicon: 'src/code-ink-space-favicon.png', // Your image for favicons. You can find it in the /src folder
+  siteDescription: 'a weekly newsletter of the best in tech, writing, and photography', // Your site description
   author: 'Patrick', // Author for schemaORGJSONLD
-  siteLogo: '/social/logo.png', // Image for schemaORGJSONLD
+  siteLogo: '/social/code-ink-space-logo.png', // Image for schemaORGJSONLD
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: '@codeinkspace', // Twitter Username - Optional
@@ -20,6 +20,6 @@ module.exports = {
 
   // Manifest and Progress color
   // See: https://developers.google.com/web/fundamentals/web-app-manifest/
-  themeColor: '#3498DB',
+  themeColor: '#FFFFFF',
   backgroundColor: '#2b2e3c',
 }

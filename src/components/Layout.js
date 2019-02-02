@@ -66,6 +66,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.primary};
     text-decoration: none;
     transition: all ${props => props.theme.transitions.normal};
+    border-bottom: 2px solid #042A2B;
   }
   a:hover {
     color: ${props => props.theme.colors.primaryLight};
@@ -81,6 +82,9 @@ const GlobalStyle = createGlobalStyle`
     &:focus {
       outline: 0;
     }
+  }
+  a.abutton {
+    border-bottom: none;
   }
   h1, h2, h3, h4, h5, h6 {
     color: ${props => props.theme.colors.grey.dark};
@@ -184,6 +188,15 @@ const GlobalStyle = createGlobalStyle`
   [hidden] {
     display: none !important;
   }
+  ul {
+    list-style-type: square;
+  }
+  li {
+    line-height: 3;
+  }
+  article p {
+    line-height: 3;
+  }
 `
 
 const Footer = styled.footer`
@@ -210,9 +223,9 @@ const Layout = ({ children, customSEO }) => (
           <GlobalStyle />
           {children}
           <Footer>
+            new issues published every Sunday <br /><br />
+            <strong>the chronicles of <a href="https://code-ink-space.gitlab.io/code">code</a> and <a href="https://code-ink-space.gitlab.io/ink">ink</a> in <a href="https://code-ink-space.gitlab.io/space">space</a></strong> <br />
             &copy; 2019 by Patrick. All rights reserved. <br />
-            <a href="https://code-ink-space.gitlab.io">i blast code and ink into space</a> <br />
-            <span>Last build: {data.site.buildTime}</span>
           </Footer>
         </React.Fragment>
       </ThemeProvider>

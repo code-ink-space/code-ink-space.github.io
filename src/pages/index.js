@@ -7,7 +7,7 @@ import { Layout, Article, Wrapper, Button, SectionTitle } from '../components'
 
 const Content = styled.div`
   grid-column: 2;
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.7);
   border-radius: 1rem;
   padding: 3rem 6rem;
   @media (max-width: ${props => props.theme.breakpoints.tablet}) {
@@ -50,27 +50,28 @@ const IndexPage = ({
     <Wrapper>
       <Hero>
         <h1>the chronicles of<br />code and ink<br />in space</h1>
-        <p>a weekly newsletter of the best in tech, books, and photography</p>
+        <p>a weekly newsletter of the best in tech, writing, and photography</p>
         <p>
           <small><small><small>
             (an offshoot of <a href="https://code-ink-space.gitlab.io">i blast code and ink into space</a>)
           </small></small></small>
         </p>
-        <Link to="/contact">
+        <a href="https://code-ink-space.gitlab.io/about" className="abutton">
           <Button big>
             <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
               <path d="M1764 11q33 24 27 64l-256 1536q-5 29-32 45-14 8-31 8-11 0-24-5l-453-185-242 295q-18 23-49 23-13 0-22-4-19-7-30.5-23.5t-11.5-36.5v-349l864-1059-1069 925-395-162q-37-14-40-55-2-40 32-59l1664-960q15-9 32-9 20 0 36 11z" />
             </svg>
-            Contact
+            contact
           </Button>
-        </Link>
+        </a>
       </Hero>
       <Content>
-        <SectionTitle>Latest stories</SectionTitle>
+        <SectionTitle>Latest Issue</SectionTitle>
         {postEdges.map(post => (
           <Article
             title={post.node.frontmatter.title}
             date={post.node.frontmatter.date}
+            body={post.node.code.body}
             excerpt={post.node.excerpt}
             timeToRead={post.node.timeToRead}
             slug={post.node.fields.slug}
@@ -95,7 +96,11 @@ IndexPage.propTypes = {
 
 export const IndexQuery = graphql`
   query IndexQuery {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(limit: 1, sort: { fields: [frontmatter___date], order: DESC }, 
+      filter: {
+        frontmatter: { draft: { ne: 1 } }
+      }
+    ) {
       edges {
         node {
           fields {
@@ -103,11 +108,14 @@ export const IndexQuery = graphql`
           }
           frontmatter {
             title
-            date(formatString: "MM/DD/YYYY")
+            date(formatString: "MMMM Do")
             categories
           }
           excerpt(pruneLength: 200)
           timeToRead
+          code {
+            body
+          }
         }
       }
     }
