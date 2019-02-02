@@ -44,6 +44,9 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
+    "test": "echo \"no test specified\" && exit 0",
+    "preDeploy": "gatsby build --prefix-paths",
+    "deploy": "npm run preDeploy && gh-pages -d public",
     "dev": "gatsby develop -o",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
