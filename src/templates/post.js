@@ -63,20 +63,24 @@ const Post = ({ pageContext: { slug, prev, next }, data: { mdx: postNode } }) =>
         <Content>
           <Title>{post.title}</Title>
           <Subline>
-            Published: {post.date} &mdash; in{' '}
+            {post.date} &mdash; <b>Issue #{post.issue}</b> in{' '}
             {post.categories.map((cat, i) => (
               <React.Fragment key={cat}>
                 {!!i && ', '}
-                <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+                <Link to={`/volumes/${kebabCase(cat)}`}>{cat}</Link>
               </React.Fragment>
             ))}
           </Subline>
           <PostContent>
             <MDXRenderer>{postNode.code.body}</MDXRenderer>
           </PostContent>
-          <PrevNext prev={prev} next={next} />
+          <br/>
+          <p align="center">
+            <img src="/code-ink-space-logo.gif" />
+          </p>
         </Content>
       </Wrapper>
+      <PrevNext prev={prev} next={next} />
     </Layout>
   )
 }
@@ -112,6 +116,7 @@ export const postQuery = graphql`
         title
         date(formatString: "MMMM Do")
         categories
+        issue
       }
       timeToRead
       parent {

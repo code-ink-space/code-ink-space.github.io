@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 
 import { Layout, Article, Wrapper, Button, SectionTitle } from '../components'
+import IssueLink from '../components/IssueLink.js'
 
 const Content = styled.div`
   grid-column: 2;
@@ -43,14 +44,15 @@ const Hero = styled.div`
 
 const IndexPage = ({
   data: {
-    allMdx: { edges: postEdges },
+    latest: { edges: postNode },
+    past: { edges: pastNode },
   },
 }) => (
   <Layout>
     <Wrapper>
       <Hero>
         <h1>the chronicles of<br />code and ink<br />in space</h1>
-        <p>a weekly newsletter of the best in tech, writing, and photography</p>
+        <p>a weekly magazine on tech, writing, and photography</p>
         <p>
           <small><small><small>
             (an offshoot of <a href="https://code-ink-space.gitlab.io">i blast code and ink into space</a>)
@@ -67,7 +69,7 @@ const IndexPage = ({
       </Hero>
       <Content>
         <SectionTitle>Latest Issue</SectionTitle>
-        {postEdges.map(post => (
+        {postNode.map(post => (
           <Article
             title={post.node.frontmatter.title}
             date={post.node.frontmatter.date}
@@ -77,8 +79,21 @@ const IndexPage = ({
             slug={post.node.fields.slug}
             categories={post.node.frontmatter.categories}
             key={post.node.fields.slug}
+            issue={post.node.frontmatter.issue}
           />
         ))}
+        <SectionTitle>Past Issues</SectionTitle>
+        <p align="center">
+        {pastNode.map(post => (
+          <IssueLink
+            title={post.node.frontmatter.title}
+            date={post.node.frontmatter.date}
+            slug={post.node.fields.slug}
+            key={post.node.fields.slug}
+            issue={post.node.frontmatter.issue}
+          />
+        ))}
+        </p>
       </Content>
     </Wrapper>
   </Layout>
@@ -87,20 +102,27 @@ const IndexPage = ({
 export default IndexPage
 
 IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      edges: PropTypes.array.isRequired,
-    }),
-  }).isRequired,
+  data: PropTypes.shape(
+  {
+    latest: PropTypes.shape(
+    {
+      allMdx: PropTypes.shape({
+        edges: PropTypes.array.isRequired,
+      }),
+    }).isRequired,
+    past: PropTypes.shape(
+    {
+      allMdx: PropTypes.shape({
+        edges: PropTypes.array.isRequired,
+      }),
+    }).isRequired,
+  }
+  ).isRequired,
 }
 
 export const IndexQuery = graphql`
   query IndexQuery {
-    allMdx(limit: 1, sort: { fields: [frontmatter___date], order: DESC }, 
-      filter: {
-        frontmatter: { draft: { ne: 1 } }
-      }
-    ) {
+    latest: allMdx(limit: 1, sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {draft: {ne: 1}}}) {
       edges {
         node {
           fields {
@@ -110,6 +132,27 @@ export const IndexQuery = graphql`
             title
             date(formatString: "MMMM Do")
             categories
+            issue
+          }
+          excerpt(pruneLength: 200)
+          timeToRead
+          code {
+            body
+          }
+        }
+      }
+    }
+    past: allMdx(skip: 1, limit: 3, sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {draft: {ne: 1}}}) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date(formatString: "MMMM Do")
+            categories
+            issue
           }
           excerpt(pruneLength: 200)
           timeToRead

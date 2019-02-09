@@ -30,7 +30,7 @@ const Title = styled.h3`
   margin-bottom: 0.75rem;
 `
 
-const Category = ({
+const Volume = ({
   data: {
     allMdx: { group },
   },
@@ -46,7 +46,7 @@ const Category = ({
         <Subline sectionTitle>Just one for now but it's a start!</Subline>
         {group.map(category => (
           <Title key={category.fieldValue}>
-            <Link to={`/categories/${kebabCase(category.fieldValue)}`}>{category.fieldValue}</Link> (
+            <Link to={`/volumes/${kebabCase(category.fieldValue)}`}>{category.fieldValue}</Link> (
             {category.totalCount})
           </Title>
         ))}
@@ -55,9 +55,9 @@ const Category = ({
   </Layout>
 )
 
-export default Category
+export default Volume
 
-Category.propTypes = {
+Volume.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       group: PropTypes.array.isRequired,
@@ -66,7 +66,7 @@ Category.propTypes = {
 }
 
 export const postQuery = graphql`
-  query CategoriesPage {
+  query VolumesPage {
     allMdx {
       group(field: frontmatter___categories) {
         fieldValue

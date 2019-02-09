@@ -197,6 +197,11 @@ const GlobalStyle = createGlobalStyle`
   article p {
     line-height: 3;
   }
+  .image-caption {
+    font-style: italic;
+    display: inherit;
+    text-align: center;
+  }
 `
 
 const Footer = styled.footer`
@@ -223,7 +228,11 @@ const Layout = ({ children, customSEO }) => (
           <GlobalStyle />
           {children}
           <Footer>
+            <small>code anything tech . ink a quote from a book . space for a memorable photo</small>
+            <br /><br />
+
             new issues published every Sunday <br /><br />
+
             <strong>the chronicles of <a href="https://code-ink-space.gitlab.io/code">code</a> and <a href="https://code-ink-space.gitlab.io/ink">ink</a> in <a href="https://code-ink-space.gitlab.io/space">space</a></strong> <br />
             &copy; 2019 by Patrick. All rights reserved. <br />
           </Footer>

@@ -4,14 +4,15 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
-  display: flex;
-  margin: 6rem auto 0 auto;
-  a {
-    color: ${props => props.theme.colors.primary};
-    display: flex;
-    align-items: center;
-  }
-  justify-items: center;
+  grid-column: 1 / -1;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 2rem 0 0 0;;
+`
+
+const Content = styled.div`
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
 `
 
 const Prev = styled.div`
@@ -34,19 +35,21 @@ const Next = styled.div`
 
 const PrevNext = ({ next, prev }) => (
   <Wrapper>
-    {prev && (
-      <Prev>
-        <span>Previous</span>
-        <Link to={prev.fields.slug}>{prev.frontmatter.title}</Link>
-      </Prev>
-    )}
+    <Content>
+      {next && (
+        <Next>
+          <span>Previous Issue</span><br/>
+          <Link to={next.fields.slug}>{next.frontmatter.title}</Link>
+        </Next>
+      )}
 
-    {next && (
-      <Next>
-        <span>Next</span>
-        <Link to={next.fields.slug}>{next.frontmatter.title}</Link>
-      </Next>
-    )}
+      {prev && (
+        <Prev>
+          <span>Next Issue</span><br/>
+          <Link to={prev.fields.slug}>{prev.frontmatter.title}</Link>
+        </Prev>
+      )}
+    </Content>
   </Wrapper>
 )
 

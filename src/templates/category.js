@@ -30,14 +30,14 @@ const Category = ({ pageContext: { category }, data: { allMdx } }) => {
   return (
     <Layout>
       <Wrapper>
-        <Helmet title={`Category: ${category} | ${config.siteTitle}`} />
+        <Helmet title={`${category} | ${config.siteTitle}`} />
         <Header>
           <Link to="/">{config.siteTitle}</Link>
         </Header>
         <Content>
           <SectionTitle>You are reading: {category}</SectionTitle>
           <Subline sectionTitle>
-            {subline} &mdash; See <Link to="/categories">all volumes</Link>
+            {subline} &mdash; See <Link to="/volumes">all volumes</Link>
           </Subline>
           {edges.map(post => (
             <Article
@@ -48,6 +48,7 @@ const Category = ({ pageContext: { category }, data: { allMdx } }) => {
               slug={post.node.fields.slug}
               categories={post.node.frontmatter.categories}
               key={post.node.fields.slug}
+              issue={post.node.frontmatter.issue}
             />
           ))}
         </Content>
@@ -83,6 +84,7 @@ export const postQuery = graphql`
             title
             date(formatString: "MMMM Do")
             categories
+            issue
           }
           fields {
             slug

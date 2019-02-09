@@ -10,7 +10,7 @@ import Subline from './Subline'
 const Post = styled.article`
   display: flex;
   flex-direction: column;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   margin-bottom: 3.5rem;
   padding-bottom: 3.5rem;
   border-bottom 1px solid rgba(0,0,0,0.25);
@@ -54,7 +54,7 @@ const Excerpt = styled.p`
 const PostContent = styled.div`
 `
 
-const Article = ({ title, date, body, excerpt, slug, timeToRead, categories }) => {
+const Article = ({ title, date, body, excerpt, slug, timeToRead, categories, issue }) => {
   const firstChar = title.charAt(0)
 
   return (
@@ -64,11 +64,11 @@ const Article = ({ title, date, body, excerpt, slug, timeToRead, categories }) =
         <Link to={slug}>{title}</Link>
       </Title>
       <Subline>
-        Published: {date} &mdash; in{' '}
+        {date} &mdash; <b>Issue #{issue}</b> in{' '}
         {categories.map((cat, i) => (
           <React.Fragment key={cat}>
             {!!i && ', '}
-            <Link to={`/categories/${kebabCase(cat)}`}>{cat}</Link>
+            <Link to={`/volumes/${kebabCase(cat)}`}>{cat}</Link>
           </React.Fragment>
         ))}
       </Subline>
@@ -88,4 +88,5 @@ Article.propTypes = {
   slug: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
   categories: PropTypes.array.isRequired,
+  issue: PropTypes.string.isRequired,
 }
