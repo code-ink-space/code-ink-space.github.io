@@ -34,7 +34,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const { error, result } = await wrapper(
     graphql(`
       {
-        allMdx {
+        allMdx(limit: 53, sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {draft: {ne: 1}}})
+        {
           edges {
             node {
               fields {

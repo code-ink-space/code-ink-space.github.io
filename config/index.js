@@ -9,7 +9,7 @@ module.exports = {
   siteHeadline: 'an offshoot of: i blast code and ink into space', // Headline for schema.org JSONLD
   siteBanner: '/social/code-ink-space-chronicles-banner.jpg', // Your image for og:image tag. You can find it in the /static folder
   favicon: 'src/code-ink-space-favicon.png', // Your image for favicons. You can find it in the /src folder
-  siteDescription: 'a weekly magazine on tech, writing, and photography', // Your site description
+  siteDescription: 'weekly notes on tech, writing and photography by a lifelong learner', // Your site description
   author: 'Patrick', // Author for schemaORGJSONLD
   siteLogo: '/social/code-ink-space-logo.png', // Image for schemaORGJSONLD
 
