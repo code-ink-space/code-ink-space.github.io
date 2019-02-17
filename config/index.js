@@ -17,6 +17,7 @@ module.exports = {
   userTwitter: '@codeinkspace', // Twitter Username - Optional
   ogSiteName: 'codeinkspace', // Facebook Site Name - Optional
   ogLanguage: 'en_US', // Facebook Language
+  googleAnalyticsID: 'UA-133432246-3',
 
   // Manifest and Progress color
   // See: https://developers.google.com/web/fundamentals/web-app-manifest/
