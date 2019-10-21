@@ -231,7 +231,7 @@ const Layout = ({ children, customSEO }) => (
             <small>code anything tech . ink a quote from a book . space for a memorable photo</small>
             <br /><br />
 
-            new issues published every Sunday <br /><br />
+            new issues are published on <a href="https://twitter.com/codeinkspace">Twitter</a><br /><br />
 
             <strong>the chronicles of <a href="https://code-ink-space.gitlab.io/code">code</a> and <a href="https://code-ink-space.gitlab.io/ink">ink</a> in <a href="https://code-ink-space.gitlab.io/space">space</a></strong> <br />
             &copy; 2019 by Patrick. All rights reserved. <br />
