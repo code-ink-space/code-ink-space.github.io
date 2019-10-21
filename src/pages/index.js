@@ -56,7 +56,7 @@ const IndexPage = ({
     <Wrapper>
       <Hero>
         <h1>the chronicles of<br />code and ink<br />in space</h1>
-        <p class="sitedesc">weekly notes on tech, writing and photography by a lifelong learner</p>
+        <p class="sitedesc">notes on tech, books and photography by a lifelong learner</p>
         <p>
           <small><small><small>
             (an offshoot of <a href="https://code-ink-space.gitlab.io">i blast code and ink into space</a>)
