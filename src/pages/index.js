@@ -59,7 +59,7 @@ const IndexPage = ({
         <p class="sitedesc">notes on tech, books and photography by a lifelong learner</p>
         <p>
           <small><small><small>
-            (an offshoot of <a href="https://code-ink-space.gitlab.io">i blast code and ink into space</a>)
+            (an offshoot of <a href="https://i.hopeph.com">i blast code and ink into space</a>)
           </small></small></small>
         </p>
       </Hero>

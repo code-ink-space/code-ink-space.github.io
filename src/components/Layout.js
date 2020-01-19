@@ -231,10 +231,10 @@ const Layout = ({ children, customSEO }) => (
             <small>code anything tech . ink a quote from a book . space for a memorable photo</small>
             <br /><br />
 
-            new issues are published on <a href="https://twitter.com/codeinkspace">Twitter</a><br /><br />
+            new issues are published on <a href="https://twitter.com/codeinkspace">Twitter</a> and <a href="https://speak.hopeph.com/patrick">Pleroma/Fediverse</a><br /><br />
 
-            <strong>the chronicles of <a href="https://code-ink-space.gitlab.io/code">code</a> and <a href="https://code-ink-space.gitlab.io/ink">ink</a> in <a href="https://code-ink-space.gitlab.io/space">space</a></strong> <br />
-            &copy; 2019 by Patrick. All rights reserved. <br />
+            <strong>the chronicles of <a href="https://code.hopeph.com">code</a> and <a href="https://ink.hopeph.com">ink</a> in <a href="https://space.hopeph.com">space</a></strong> <br />
+            &copy; 2020 by Patrick. All rights reserved. <br />
           </Footer>
         </React.Fragment>
       </ThemeProvider>

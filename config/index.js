@@ -4,7 +4,7 @@ module.exports = {
   siteTitle: 'the chronicles of code and ink in space', // Navigation and Site Title
   siteTitleAlt: 'the chronicles of code and ink in space', // Alternative Site title for SEO
   siteTitleManifest: 'the chronicles of code and ink in space',
-  siteUrl: 'https://code-ink-space.github.io', // Domain of your site. No trailing slash!
+  siteUrl: 'https://chronicles.hopeph.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteHeadline: 'an offshoot of: i blast code and ink into space', // Headline for schema.org JSONLD
   siteBanner: '/social/code-ink-space-chronicles-banner.jpg', // Your image for og:image tag. You can find it in the /static folder
